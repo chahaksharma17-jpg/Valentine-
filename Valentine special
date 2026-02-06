@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine? 💌</title>
+
+<style>
+/* BACKGROUND */
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #fff1f5, #ffe6ee);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Playfair Display", serif;
+    overflow: hidden;
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: absolute;
+    color: rgba(255, 90, 120, 0.5);
+    font-size: 20px;
+    animation: floatUp 10s infinite ease-in-out;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-160px); opacity: 0; }
+}
+
+/* PETALS */
+.petal {
+    position: absolute;
+    font-size: 18px;
+    animation: fall 12s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); }
+    100% { transform: translateY(120vh) rotate(360deg); }
+}
+
+/* ENVELOPE */
+.envelope {
+    width: 360px;
+    height: 230px;
+    background: #ffdbe8;
+    border-radius: 14px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 30px 50px rgba(0,0,0,0.18);
+    transition: transform 0.6s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.03);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-top: 120px solid #ffb6c9;
+    border-radius: 14px 14px 0 0;
+}
+
+/* WAX SEAL */
+.seal {
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ff4f81, #c9184a);
+    border-radius: 50%;
+    box-shadow: inset 0 0 12px rgba(255,255,255,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+}
+
+/* CARD */
+.card {
+    background: #fffafc;
+    padding: 45px;
+    border-radius: 28px;
+    max-width: 520px;
+    box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+    text-align: center;
+    animation: fadeIn 1.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+    display: none;
+}
+
+/* BUTTON */
+.valentine-btn {
+    margin-top: 30px;
+    padding: 15px 36px;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fab);
+    color: white;
+    border: none;
+    border-radius: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(255,77,109,0.4);
+    transition: transform 0.3s ease;
+}
+
+.valentine-btn:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS -->
+<script>
+for(let i=0;i<50;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"%";
+    h.style.bottom=Math.random()*-200+"px";
+    h.style.animationDelay=Math.random()*10+"s";
+    document.body.appendChild(h);
+}
+</script>
+
+<!-- FALLING PETALS -->
+<script>
+for(let i=0;i<30;i++){
+    let p=document.createElement("div");
+    p.className="petal";
+    p.innerHTML="🌸";
+    p.style.left=Math.random()*100+"%";
+    p.style.animationDelay=Math.random()*12+"s";
+    document.body.appendChild(p);
+}
+</script>
+
+<!-- ENVELOPE -->
+<div class="envelope" id="envelope" onclick="openCard()">
+    <div class="seal">❤</div>
+</div>
+
+<!-- CARD -->
+<div class="card hidden" id="card">
+    <h1>My Love ❤️</h1>
+
+    <p>
+        Saying <strong>yes</strong> to you has been the simplest and
+        most perfect decision of my life.
+    </p>
+
+    <p>
+        You make me better every day. You motivate me in ways
+        I never thought possible, and I am so much happier with you.
+    </p>
+
+    <p>
+        Of course you know me well, my love 😉
+    </p>
+
+    <p>
+        I can’t wait to spend my life with you — to grow together,
+        laugh together, and build a future full of love.
+    </p>
+
+    <p>
+        I am so glad that you are the man I want to spend my whole
+        life with. I hope all your dreams come true and that your
+        life is happy and beautiful always.
+    </p>
+
+    <h2>Will you be my Valentine? 💕</h2>
+
+    <button class="valentine-btn" onclick="yes()">Yes, always ❤️</button>
+</div>
+
+<script>
+function openCard(){
+    document.getElementById("envelope").style.display="none";
+    document.getElementById("card").style.display="block";
+}
+
+function yes(){
+    alert("You just made my heart the happiest 💖");
+}
+</script>
+
+</body>
+</html>
